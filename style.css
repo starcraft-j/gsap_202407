@@ -1,0 +1,477 @@
+@font-face {
+  font-family: "Big Shoulders Display";
+  src: url("./fonts/BigShouldersDisplay.ttf") format("woff2-variations");
+}
+@font-face {
+  font-family: "Canopee";
+  src: url("./fonts/Canopee Regular.otf") format("woff2-variations");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #fff;
+  font-family: "Big Shoulders Display";
+  background-color: #111;
+  text-transform: uppercase;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section h1 {
+  font-size: 10vw;
+  color: #fff;
+}
+section h2 {
+  font-size: 8vw;
+  /* color: #fff; */
+  color: #111;
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #dae24a;
+  color: #111;
+  pointer-events: none;
+  z-index: 999999;
+}
+
+.counter {
+  position: fixed;
+  left: 50px;
+  bottom: 50px;
+  display: flex;
+  height: 100px;
+  font-size: 70px;
+  line-height: 102px;
+  clip-path: polygon(0 0, 100% 0, 100% 100px, 0 100px);
+  font-weight: 400;
+}
+
+.counter-1,
+.counter-2,
+.counter-3 {
+  position: relative;
+  top: -15px;
+}
+
+.num1offset1 {
+  position: relative;
+  right: -10px;
+}
+
+.num1offset2 {
+  position: relative;
+  right: -10px;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  background: #e3e6a8;
+}
+
+.loader-1 {
+  position: relative;
+  background: #111;
+  width: 200px;
+}
+
+.loader-2 {
+  position: relative;
+  width: 100px;
+  background: #111;
+}
+
+.bar {
+  height: 50px;
+}
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 99999;
+  mix-blend-mode: difference;
+}
+
+#header .header-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 2em;
+}
+
+#header .header-menu h1, #header .header-menu div {
+  flex: 1;
+}
+
+#header .header-menu .header-menu__logo a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#header .header-menu .header-menu__btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.burger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.75em 2em 1.5em 2em;
+  background: rgba(255, 255, 255, 0);
+  outline: none;
+  border: none;
+  width: 28px;
+  height: 20px;
+  transition: all 250ms ease-out;
+  cursor: pointer;
+}
+.burger:before,
+.burger:after {
+  content: "";
+  width: 40px;
+  height: 2px;
+  position: absolute;
+  background: #fff;
+  transition: all 250ms ease-out;
+  will-change: transform;
+}
+.burger:before {
+  transform: translateY(-3px);
+}
+.burger:after {
+  transform: translateY(3px);
+}
+.active.burger:before {
+  transform: translateY(0) rotate(45deg);
+}
+.active.burger:after {
+  transform: translateY(0) rotate(-45deg);
+}
+
+/** Fixed Full Navigation */
+
+#fixedNavigation.navi-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background: #424242;
+  clip-path: polygon(0 0 , 100% 0 , 100% 0 , 0 0);
+  will-change: transform;
+  z-index: 9999;
+}
+
+#fixedNavigation.navi-overlay .navi-overlay__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+#fixedNavigation.navi-overlay .navi-overlay__menu .menu-item {
+  display: flex;
+  cursor: pointer;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+#fixedNavigation.navi-overlay .navi-overlay__menu .menu-item p {
+  position: relative;
+  text-align: center;
+  font-family: "Canopee";
+  font-size: 15vw;
+  line-height: 80%;
+  will-change: transform;
+  transition: letter-spacing 0.3s;
+}
+
+#fixedNavigation.navi-overlay .navi-overlay__menu .menu-item p:hover {
+  letter-spacing: 0.075em;
+}
+
+#fixedNavigation.navi-overlay .navi-overlay__menu .menu-item p#active::after {
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: 0;
+  transform: translateY(-50%);
+  background: #e3e6a8;
+  width: 100%;
+  height: 12px;
+}
+
+#fixedNavigation.navi-overlay .navi-overlay__menu .menu-item a {
+  color: #cdc6be;
+  text-decoration: none;
+}
+
+#fixedNavigation.navi-overlay .navi-overlay__sub {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5em;
+  opacity: 0;
+}
+#fixedNavigation.navi-overlay .navi-overlay__sub p {
+  /* font-family: "Canopee"; */
+  font-size: 20px;
+  color: #cdc6be;
+}
+
+#fixedNavigation.navi-overlay .navi-overlay__sub p a {
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+/** Side float Navigation*/
+#parallax__nav {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 35px 10px;
+  border-radius: 50px;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+#parallax__nav li {
+  list-style: none;
+}
+
+#parallax__nav li a {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+#parallax__nav li a.active {
+  background: #fff;
+  width: 7px;
+  height: 7px;
+}
+
+#main .parallax-item__text {
+  font-size: 10vw;
+  z-index: 100;
+}
+
+#main .parallax-item__img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  background-size: cover;
+  background-position: center;
+}
+
+#main .parallax-item__img::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+#section01 .parallax-item__img {
+  background-image: url(assets/img1.jpg);
+}
+#section02 .parallax-item__img {
+  background-image: url(assets/img2.jpg);
+}
+#section03 .parallax-item__img {
+  background-image: url(assets/img3.jpg);
+}
+#section04 .parallax-item__img {
+  background-image: url(assets/img4.jpg);
+}
+
+/** Marquee Section*/
+#section05.marquees {
+  height: 150vh;
+  display: flex;
+  flex-direction: column;
+  align-items: inherit;
+  justify-content: center;
+  /* background-color: #fff; */
+}
+
+#section05.marquees p {
+  font-size: 42px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-family: "Big Shoulders Display";
+
+}
+
+#section05.marquees .marquee-container {
+  position: relative;
+  width: 125%;
+  height: 250px;
+  display: flex;
+  gap: 1em;
+  margin-bottom: 1em;
+  overflow: hidden;
+}
+
+#section05.marquees .marquee-container .marquee {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 1em;
+}
+
+#marquee-1 .marquee,
+#marquee-3 .marquee {
+  left: -15%;
+}
+
+#section05.marquees .marquee .item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#section05.marquees .marquee .item.with-text {
+  flex: 1.5;
+}
+
+#section05.marquees .marquee .item h1 {
+  text-transform: uppercase;
+  font-size: 100px;
+}
+
+.common-transition {
+	position: fixed;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	display: flex;
+	width: 100%;
+	height: 100vh;
+	padding: 0;
+	margin: 0;
+	pointer-events: none;
+  z-index: 999999;
+}
+
+.common-transition > .item {
+	width: 20%;
+	background: #dae24a;
+	transform: scaleY(0);
+}
+
+.common-transition > .item:nth-child(n+6) {
+	display: none;
+}
+
+#parallax-horizontal {
+  display: flex;
+  width: 300%;
+	background: #dae24a;
+
+}
+
+#parallax-horizontal section img {
+  width: 500px;
+  height: 400px;
+  object-fit: cover;
+}
+#parallax-horizontal section h1 {
+    color: #111;
+    text-align: center;
+}
+
+.foot {
+  background: #111;
+}
+
+@media (max-width: 900px) {
+  section.marquees {
+    height: 100vh;
+  }
+
+  .marquee-container {
+    width: 250%;
+    height: 150px;
+  }
+
+  #marquee-2 .marquee,
+  #marquee-4 .marquee {
+    left: -35%;
+  }
+
+  .item.with-text {
+    flex: 1;
+  }
+
+  .item h1 {
+    font-size: 60px;
+  }
+
+  #parallax-horizontal section img {
+    width: 80%;
+    height: auto;
+  }
+}
